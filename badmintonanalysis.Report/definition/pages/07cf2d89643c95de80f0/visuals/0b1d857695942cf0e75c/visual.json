@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "0b1d857695942cf0e75c",
+  "position": {
+    "x": 0,
+    "y": 42.409638554216862,
+    "z": 0,
+    "height": 643.85542168674692,
+    "width": 767.22891566265059
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flashscore"
+                    }
+                  },
+                  "Property": "Name"
+                }
+              },
+              "queryRef": "flashscore.Name",
+              "nativeQueryRef": "Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "flashscore"
+                    }
+                  },
+                  "Property": "Nationality"
+                }
+              },
+              "queryRef": "flashscore.Nationality",
+              "nativeQueryRef": "Nationality"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "flashscore"
+                        }
+                      },
+                      "Property": "Points"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(flashscore.Points)",
+              "nativeQueryRef": "Sum of Points"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "flashscore"
+                        }
+                      },
+                      "Property": "Rank"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(flashscore.Rank)",
+              "nativeQueryRef": "Sum of Rank"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "flashscore"
+                        }
+                      },
+                      "Property": "Tournaments"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(flashscore.Tournaments)",
+              "nativeQueryRef": "Sum of Tournaments"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

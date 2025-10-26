@@ -1,0 +1,58 @@
+table flashscore
+	lineageTag: a8c512b1-33f2-422e-9150-0a9041a3124d
+
+	column Rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 8eebff7b-99b5-41db-b6fc-8eb030fbc4e0
+		summarizeBy: sum
+		sourceColumn: Rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column Points
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d50143d-d46f-4945-b384-9c1f90616286
+		summarizeBy: sum
+		sourceColumn: Points
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tournaments
+		dataType: int64
+		formatString: 0
+		lineageTag: b2372945-90f9-4b7f-b7c9-0f8657bc1aaa
+		summarizeBy: sum
+		sourceColumn: Tournaments
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 2bb478b2-1c6a-4a60-a6fc-e559c60b414a
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nationality
+		dataType: string
+		lineageTag: e0296528-d4dc-4b00-a1d4-4c80d114aa94
+		summarizeBy: none
+		sourceColumn: Nationality
+
+		annotation SummarizationSetBy = Automatic
+
+	partition flashscore = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\HP\OneDrive\Documents\pbibadminton\malaysiabadmintonpbi\flashscore.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Rank", Int64.Type}, {"Points", Int64.Type}, {"Tournaments", Int64.Type}, {"Name", type text}, {"Nationality", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
