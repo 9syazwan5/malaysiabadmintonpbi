@@ -1,6 +1,11 @@
 table flashscore
 	lineageTag: a8c512b1-33f2-422e-9150-0a9041a3124d
 
+	measure 'Average of Points' = AVERAGE(flashscore[Points]) --this measures the average of points among players
+		lineageTag: e321510a-969a-446b-ac26-207794039659
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Rank
 		dataType: int64
 		formatString: 0
